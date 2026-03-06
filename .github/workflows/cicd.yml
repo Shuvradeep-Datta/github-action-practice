@@ -13,17 +13,20 @@ jobs:
         run: echo "Code commited to the branch"
   build:
     runs-on: ubuntu-latest
+    needs: [code]
     steps:
       - name: Code build to the Docker
         run: echo "Docker Conatiner build"
   test:
     runs-on: ubuntu-latest
+    needs: [build]
     steps:
       - name: Code test in the docker
         run: echo "Testing the Container"
         
   deploy:
     runs-on: ubuntu-latest
+    needs: [build,test]
     steps:
       - name: Code Deploy
         run: echo "Docker compose deployed the app"
