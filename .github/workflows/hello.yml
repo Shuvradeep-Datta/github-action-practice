@@ -13,7 +13,7 @@ jobs:
         run: echo "Hello Shuvradeep"
 
       - name: say hello to the username
-        run: echo "Hello $RUNNER_NAME"
+        run: echo "Hello $RUNNER_OS"
 
   details:
     runs-on: ubuntu-latest
