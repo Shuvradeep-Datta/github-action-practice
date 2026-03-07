@@ -1,50 +1,32 @@
 name: portfolio
-
 on:
   push:
     branches:
       - main
-
-
-  workflow_dispatch:
-
+  workflow_dispatch: null
 permissions:
-    pages: write      # to deploy to Pages
-    id-token: write   # to verify the deployment originates from an appropriate source
-    contents: read
-    
+  pages: write
+  id-token: write
+  contents: read
 jobs:
-  code:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-
-  setup_pages:
-    runs-on: ubuntu-latest
-    needs: [code]
-    steps:
-      - name: Setup Github Pages
+      - name: Setup GitHub Pages
         uses: actions/configure-pages@v4
-
-  static_code_artifacts:
-    runs-on: ubuntu-latest
-    needs: [setup_pages]
-    steps:
-      - name: Upload Static File
+      - name: Upload Static Files
         uses: actions/upload-pages-artifact@v4
         with:
           path: .
-
-  deployments:
+  deploy:
+    needs: build
     runs-on: ubuntu-latest
-    needs: [setup_pages,static_code_artifacts]
     environment:
-          name: github-pages
-          url: ${{ steps.deployment.outputs.page_url }} 
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy the Pages
+      - name: Deploy Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-  
