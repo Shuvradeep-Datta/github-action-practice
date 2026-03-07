@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shuvradeep Datta · cloud & code portfolio</title>
-  <!-- Font & Icons (Font Awesome for extra flair) -->
+  <title>Shuvradeep Datta · animated cloud & code</title>
+  <!-- Font & Icons (Font Awesome) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <style>
@@ -16,11 +16,50 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: radial-gradient(circle at 10% 30%, #0b1c24, #0a141c 80%);
+      background: radial-gradient(circle at 30% 10%, #0b1c24, #0a141c 90%);
       color: #edf5fc;
       line-height: 1.6;
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
+
+    /* ========== ANIMATIONS ========== */
+    @keyframes float {
+      0% { transform: translateY(0px) translateX(0px); }
+      50% { transform: translateY(-10px) translateX(5px); }
+      100% { transform: translateY(0px) translateX(0px); }
+    }
+
+    @keyframes glowPulse {
+      0% { box-shadow: 0 0 5px #3bd0ff30, 0 0 15px #3bd0ff20; }
+      50% { box-shadow: 0 0 20px #3bd0ff80, 0 0 40px #3bd0ff40; }
+      100% { box-shadow: 0 0 5px #3bd0ff30, 0 0 15px #3bd0ff20; }
+    }
+
+    @keyframes fadeSlide {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* base animation for sections */
+    .section, .hero, nav, .footer {
+      animation: fadeSlide 1s ease forwards;
+    }
+
+    nav { animation-delay: 0.1s; opacity: 0; }
+    .hero { animation-delay: 0.2s; opacity: 0; }
+    #about { animation-delay: 0.3s; opacity: 0; }
+    #skills { animation-delay: 0.4s; opacity: 0; }
+    #projects { animation-delay: 0.5s; opacity: 0; }
+    #blog { animation-delay: 0.6s; opacity: 0; }
+    #contact { animation-delay: 0.7s; opacity: 0; }
+    .footer { animation-delay: 0.8s; opacity: 0; }
 
     /* modern glassmorphism + neon accents */
     .glass-card, .card, nav, .blog-card {
@@ -29,6 +68,7 @@
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(72, 202, 228, 0.15);
       box-shadow: 0 15px 35px -10px rgba(0,0,0,0.5);
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.1);
     }
 
     nav {
@@ -40,16 +80,19 @@
       border-radius: 60px;
       border-bottom: 1px solid #2dc0e680;
       box-shadow: 0 8px 20px rgba(0, 150, 200, 0.1);
+      animation: glowPulse 4s infinite;
     }
 
     .logo {
       font-weight: 700;
       font-size: 1.8rem;
       letter-spacing: 2px;
-      background: linear-gradient(130deg, #a0f0ff, #6effe8);
+      background: linear-gradient(130deg, #a0f0ff, #6effe8, #a0f0ff);
+      background-size: 200% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      animation: gradientShift 6s infinite;
     }
 
     nav ul {
@@ -66,10 +109,25 @@
       transition: 0.2s;
       border-bottom: 2px solid transparent;
       padding-bottom: 4px;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(90deg, #2dc0e6, #9feaff);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
     }
 
     nav a:hover {
-      border-bottom-color: #2dc0e6;
       color: white;
     }
 
@@ -86,22 +144,26 @@
     .hero h2 {
       font-size: 4.5rem;
       font-weight: 700;
-      background: linear-gradient(145deg, #ffffff, #a2e3ff);
+      background: linear-gradient(145deg, #ffffff, #a2e3ff, #d0f2ff);
+      background-size: 200% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       line-height: 1.2;
+      animation: gradientShift 8s infinite;
     }
 
     .hero p {
       font-size: 1.4rem;
       max-width: 700px;
       margin: 1.5rem 0 2rem;
-      opacity: 0.85;
+      opacity: 0.9;
       font-weight: 300;
       background: rgba(0, 191, 255, 0.1);
       padding: 0.8rem 2rem;
       border-radius: 60px;
       backdrop-filter: blur(4px);
+      border: 1px solid #3bd0ff30;
+      animation: float 6s infinite ease-in-out;
     }
 
     .btn {
@@ -117,6 +179,28 @@
       transition: 0.3s;
       box-shadow: 0 0 12px #3bd0ff50;
       backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0%;
+      height: 0%;
+      background: radial-gradient(circle, #3bd0ff80, transparent);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+      z-index: -1;
+    }
+
+    .btn:hover::before {
+      width: 300%;
+      height: 300%;
     }
 
     .btn:hover {
@@ -156,12 +240,21 @@
       border-radius: 32px;
       transition: all 0.25s ease;
       border: 1px solid rgba(72, 202, 228, 0.2);
+      animation: float 8s infinite ease-in-out;
+      animation-play-state: paused; /* pause by default, play on hover? better: just subtle base motion */
     }
 
+    /* subtle individual float delays */
+    .card:nth-child(1) { animation: float 7s infinite 0.2s; animation-play-state: running; }
+    .card:nth-child(2) { animation: float 8s infinite 0.6s; animation-play-state: running; }
+    .card:nth-child(3) { animation: float 6.5s infinite 0.1s; animation-play-state: running; }
+    .card:nth-child(4) { animation: float 9s infinite 0.9s; animation-play-state: running; }
+
     .card:hover {
-      transform: translateY(-10px);
+      transform: translateY(-10px) scale(1.02);
       border-color: #3bd0ff;
-      box-shadow: 0 30px 40px -15px #00c8ff40;
+      box-shadow: 0 30px 40px -15px #00c8ff80;
+      animation-play-state: paused;
     }
 
     .card h3 {
@@ -187,6 +280,11 @@
       border-radius: 40px;
       margin-bottom: 3rem;
       border: 1px solid #55d9ff30;
+      transition: box-shadow 0.3s;
+    }
+
+    .blog-form:hover {
+      box-shadow: 0 0 30px #3bd0ff30;
     }
 
     .blog-form input, .blog-form textarea {
@@ -204,7 +302,7 @@
 
     .blog-form input:focus, .blog-form textarea:focus {
       border-color: #3bd0ff;
-      box-shadow: 0 0 0 3px #1f9fc050;
+      box-shadow: 0 0 0 3px #1f9fc050, 0 0 20px #3bd0ff;
     }
 
     .blog-form textarea {
@@ -218,6 +316,7 @@
       padding: 1.8rem;
       border-radius: 28px;
       word-wrap: break-word;
+      animation: glowPulse 5s infinite;
     }
 
     .blog-card h3 {
@@ -243,6 +342,12 @@
       border-radius: 60px;
       padding: 3rem;
       border: 1px solid #2a869b;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .contact-flex:hover {
+      border-color: #3bd0ff;
+      box-shadow: 0 0 40px #1aa3cc40;
     }
 
     .contact-item {
@@ -256,6 +361,11 @@
       font-size: 2rem;
       color: #3bd0ff;
       width: 40px;
+      transition: transform 0.3s;
+    }
+
+    .contact-item:hover i {
+      transform: scale(1.2) rotate(5deg);
     }
 
     .contact-item a {
@@ -269,7 +379,22 @@
       margin: 2rem 0;
     }
 
-    /* responsive */
+    /* text glow */
+    .text-glow {
+      color: #b7f0ff;
+      text-shadow: 0 0 8px #3bd0ff, 0 0 20px #3bd0ff;
+    }
+    ::selection {
+      background: #3bd0ff70;
+    }
+    i {
+      margin-right: 6px;
+    }
+    .card i {
+      display: block;
+      margin-bottom: 12px;
+    }
+
     @media (max-width: 650px) {
       nav {
         flex-direction: column;
@@ -310,7 +435,7 @@
   <!-- ABOUT -->
   <section class="section" id="about">
     <h2><i class="fas fa-user-astronaut" style="margin-right: 15px;"></i> About me</h2>
-    <div style="background: #12252e60; padding: 2.5rem; border-radius: 48px; border: 1px solid #3bd0ff30; font-size: 1.25rem; font-weight: 300; max-width: 900px;">
+    <div style="background: #12252e60; padding: 2.5rem; border-radius: 48px; border: 1px solid #3bd0ff30; font-size: 1.25rem; font-weight: 300; max-width: 900px; backdrop-filter: blur(6px); transition: 0.3s;">
       <p>Software developer with experience in <strong class="text-glow">Java backend</strong> and a growing love for modern frontend (React) and <strong class="text-glow">DevOps pipelines</strong>. I enjoy building systems that are both scalable and clean. Currently automating everything that moves — from GitHub Actions to container experiments.</p>
       <p style="margin-top: 1.2rem;">🔧 constantly learning: Kubernetes, advanced React, and cloud patterns.</p>
     </div>
@@ -368,10 +493,8 @@
 
   <script>
     (function() {
-      // BLOG functionality with localStorage
       const blogListEl = document.getElementById('blogList');
 
-      // load from localStorage and display
       function displayAllBlogs() {
         const posts = JSON.parse(localStorage.getItem('shuvra_blogs') || '[]');
         blogListEl.innerHTML = ''; 
@@ -379,7 +502,6 @@
           blogListEl.innerHTML = '<div class="blog-card" style="grid-column:1/-1; text-align:center;"><p>✨ No blog entries yet. Be the first to write about Java or DevOps!</p></div>';
           return;
         }
-        // show newest first (reverse)
         posts.slice().reverse().forEach(post => {
           if (!post.title || !post.content) return;
           const card = document.createElement('div');
@@ -391,7 +513,6 @@
         });
       }
 
-      // simple escape to avoid XSS (just for user input)
       function escapeHTML(str) {
         return String(str).replace(/[&<>"]/g, function(m) {
           if (m === '&') return '&amp;';
@@ -417,41 +538,15 @@
         posts.push({ title, content, timestamp: Date.now() });
         localStorage.setItem('shuvra_blogs', JSON.stringify(posts));
 
-        // clear inputs
         titleInput.value = '';
         contentInput.value = '';
 
         displayAllBlogs();
       };
 
-      // initial load
       displayAllBlogs();
 
-      // optional: smooth view work button (already there)
-    })();
-  </script>
-
-  <!-- add a little style glow (extra) -->
-  <style>
-    .text-glow {
-      color: #b7f0ff;
-      text-shadow: 0 0 8px #3bd0ff;
-    }
-    ::selection {
-      background: #3bd0ff70;
-    }
-    i {
-      margin-right: 6px;
-    }
-    .card i {
-      display: block;
-      margin-bottom: 12px;
-    }
-  </style>
-
-  <!-- smooth scroll for internal links (hero button and nav) -->
-  <script>
-    (function smooth(){
+      // smooth scroll for all anchor links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
           e.preventDefault();
@@ -459,8 +554,8 @@
           if (target) target.scrollIntoView({ behavior: 'smooth' });
         });
       });
+
     })();
   </script>
 </body>
-
 </html>
