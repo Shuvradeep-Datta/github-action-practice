@@ -1,0 +1,31 @@
+name: portfolio
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+    pages: write      # to deploy to Pages
+    id-token: write   # to verify the deployment originates from an appropriate source
+  
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+          name: github-pages
+          url: ${{ steps.deployment.outputs.page_url }} 
+    steps:
+        # Get Access to you github Repository
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        # Create the Github Pages using the code
+      - name: Setup Github Pages
+        uses: actions/configure-pages@v4
+        # Static Code Artifacts
+      - name: Upload Static File
+        uses: actions/upload-pages-artifact@v4
+        # Deploy the pages
+      - name: Deploy the Pages
+        uses: actions/deploy-pages@v4
+
+        
