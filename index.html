@@ -1,385 +1,562 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shuvradeep Datta · animated cloud & code</title>
+  <!-- Font & Icons (Font Awesome) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    body {
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at 30% 10%, #0b1c24, #0a141c 90%);
+      color: #edf5fc;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
 
-<title>Shuvradeep Datta | Java Developer Portfolio</title>
+    /* ========== ANIMATIONS ========== */
+    @keyframes float {
+      0% { transform: translateY(0px) translateX(0px); }
+      50% { transform: translateY(-10px) translateX(5px); }
+      100% { transform: translateY(0px) translateX(0px); }
+    }
 
-<!-- SEO -->
-<meta name="description" content="Shuvradeep Datta - Java Developer portfolio specializing in Spring Boot, React and DevOps automation.">
-<meta name="keywords" content="Shuvradeep Datta, Java Developer, Spring Boot, React, DevOps, CI/CD">
-<meta name="author" content="Shuvradeep Datta">
+    @keyframes glowPulse {
+      0% { box-shadow: 0 0 5px #3bd0ff30, 0 0 15px #3bd0ff20; }
+      50% { box-shadow: 0 0 20px #3bd0ff80, 0 0 40px #3bd0ff40; }
+      100% { box-shadow: 0 0 5px #3bd0ff30, 0 0 15px #3bd0ff20; }
+    }
 
-<link rel="canonical" href="https://portfolio.shuvradeep-datta.rf.gd">
+    @keyframes fadeSlide {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
 
-<meta property="og:title" content="Shuvradeep Datta | Developer Portfolio">
-<meta property="og:description" content="Java Backend Developer exploring React, DevOps and cloud systems.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://portfolio.shuvradeep-datta.rf.gd">
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-<meta name="twitter:card" content="summary_large_image">
+    /* base animation for sections */
+    .section, .hero, nav, .footer {
+      animation: fadeSlide 1s ease forwards;
+    }
 
-<!-- Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    nav { animation-delay: 0.1s; opacity: 0; }
+    .hero { animation-delay: 0.2s; opacity: 0; }
+    #about { animation-delay: 0.3s; opacity: 0; }
+    #skills { animation-delay: 0.4s; opacity: 0; }
+    #projects { animation-delay: 0.5s; opacity: 0; }
+    #blog { animation-delay: 0.6s; opacity: 0; }
+    #contact { animation-delay: 0.7s; opacity: 0; }
+    .footer { animation-delay: 0.8s; opacity: 0; }
 
-<!-- Font -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    /* modern glassmorphism + neon accents */
+    .glass-card, .card, nav, .blog-card {
+      background: rgba(18, 35, 48, 0.5);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(72, 202, 228, 0.15);
+      box-shadow: 0 15px 35px -10px rgba(0,0,0,0.5);
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+    }
 
-<!-- Markdown parser -->
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 6%;
+      margin: 1rem 5% 0;
+      border-radius: 60px;
+      border-bottom: 1px solid #2dc0e680;
+      box-shadow: 0 8px 20px rgba(0, 150, 200, 0.1);
+      animation: glowPulse 4s infinite;
+    }
 
-<style>
+    .logo {
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+      background: linear-gradient(130deg, #a0f0ff, #6effe8, #a0f0ff);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 6s infinite;
+    }
 
-*{margin:0;padding:0;box-sizing:border-box}
+    nav ul {
+      display: flex;
+      gap: 2.8rem;
+      list-style: none;
+    }
 
-body{
-font-family:'Inter',sans-serif;
-background:radial-gradient(circle at 30% 10%,#0b1c24,#0a141c 90%);
-color:#edf5fc;
-line-height:1.6;
-scroll-behavior:smooth;
-}
+    nav a {
+      color: #cef2ff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: 0.2s;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+      position: relative;
+    }
 
-nav{
-display:flex;
-justify-content:space-between;
-padding:20px 8%;
-background:rgba(20,40,50,0.5);
-backdrop-filter:blur(12px);
-border-bottom:1px solid #2dc0e640;
-}
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(90deg, #2dc0e6, #9feaff);
+      transition: width 0.3s ease;
+    }
 
-nav ul{
-display:flex;
-gap:25px;
-list-style:none;
-}
+    nav a:hover::after {
+      width: 100%;
+    }
 
-nav a{
-color:#d8f4ff;
-text-decoration:none;
-font-weight:500;
-}
+    nav a:hover {
+      color: white;
+    }
 
-.logo{
-font-weight:700;
-font-size:1.4rem;
-}
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 0 5%;
+    }
 
-.hero{
-text-align:center;
-padding:120px 20px;
-}
+    .hero h2 {
+      font-size: 4.5rem;
+      font-weight: 700;
+      background: linear-gradient(145deg, #ffffff, #a2e3ff, #d0f2ff);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.2;
+      animation: gradientShift 8s infinite;
+    }
 
-.hero h1{
-font-size:3.8rem;
-margin-bottom:20px;
-}
+    .hero p {
+      font-size: 1.4rem;
+      max-width: 700px;
+      margin: 1.5rem 0 2rem;
+      opacity: 0.9;
+      font-weight: 300;
+      background: rgba(0, 191, 255, 0.1);
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      backdrop-filter: blur(4px);
+      border: 1px solid #3bd0ff30;
+      animation: float 6s infinite ease-in-out;
+    }
 
-.hero p{
-font-size:1.2rem;
-opacity:0.8;
-}
+    .btn {
+      background: transparent;
+      border: 2px solid #3bd0ff;
+      color: #d6f2ff;
+      padding: 0.9rem 2.8rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 12px #3bd0ff50;
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
 
-.btn{
-display:inline-block;
-margin-top:25px;
-padding:12px 28px;
-border-radius:40px;
-border:2px solid #3bd0ff;
-color:white;
-text-decoration:none;
-transition:.3s;
-}
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0%;
+      height: 0%;
+      background: radial-gradient(circle, #3bd0ff80, transparent);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+      z-index: -1;
+    }
 
-.btn:hover{
-background:#3bd0ff;
-color:#081820;
-}
+    .btn:hover::before {
+      width: 300%;
+      height: 300%;
+    }
 
-.section{
-padding:80px 10%;
-}
+    .btn:hover {
+      background: #3bd0ff;
+      color: #0b1f2b;
+      border-color: #a6edff;
+      box-shadow: 0 0 35px #2dc0e6;
+      transform: scale(1.03);
+    }
 
-.section h2{
-margin-bottom:40px;
-font-size:2rem;
-}
+    .section {
+      padding: 5rem 8%;
+      border-bottom: 1px solid rgba(45, 192, 230, 0.1);
+    }
 
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-}
+    .section h2 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 2.5rem;
+      display: inline-block;
+      background: linear-gradient(135deg, #b3f0ff, #69d1f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      border-left: 6px solid #3bd0ff;
+      padding-left: 1.3rem;
+    }
 
-.card{
-background:rgba(20,40,50,0.5);
-padding:30px;
-border-radius:25px;
-border:1px solid #3bd0ff20;
-}
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
 
-.card h3{
-margin-bottom:10px;
-}
+    .card, .blog-card {
+      padding: 2rem 1.5rem;
+      border-radius: 32px;
+      transition: all 0.25s ease;
+      border: 1px solid rgba(72, 202, 228, 0.2);
+      animation: float 8s infinite ease-in-out;
+      animation-play-state: paused; /* pause by default, play on hover? better: just subtle base motion */
+    }
 
-.blog-form input,
-.blog-form textarea{
-width:100%;
-padding:12px;
-border-radius:25px;
-border:none;
-margin-bottom:15px;
-background:#0f2b36;
-color:white;
-}
+    /* subtle individual float delays */
+    .card:nth-child(1) { animation: float 7s infinite 0.2s; animation-play-state: running; }
+    .card:nth-child(2) { animation: float 8s infinite 0.6s; animation-play-state: running; }
+    .card:nth-child(3) { animation: float 6.5s infinite 0.1s; animation-play-state: running; }
+    .card:nth-child(4) { animation: float 9s infinite 0.9s; animation-play-state: running; }
 
-.blog-card{
-background:#112630;
-padding:20px;
-border-radius:20px;
-}
+    .card:hover {
+      transform: translateY(-10px) scale(1.02);
+      border-color: #3bd0ff;
+      box-shadow: 0 30px 40px -15px #00c8ff80;
+      animation-play-state: paused;
+    }
 
-.contact{
-display:flex;
-flex-wrap:wrap;
-gap:20px;
-}
+    .card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      background: linear-gradient(145deg, #fff, #b0e5ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-.contact a{
-color:#bfefff;
-text-decoration:none;
-}
+    .card p, .blog-card p {
+      opacity: 0.85;
+      font-weight: 300;
+      font-size: 1rem;
+    }
 
-.footer{
-text-align:center;
-padding:30px;
-opacity:.6;
-border-top:1px solid #2dc0e620;
-}
+    /* blog section specific */
+    .blog-form {
+      background: rgba(10, 30, 40, 0.7);
+      backdrop-filter: blur(16px);
+      padding: 2.5rem;
+      border-radius: 40px;
+      margin-bottom: 3rem;
+      border: 1px solid #55d9ff30;
+      transition: box-shadow 0.3s;
+    }
 
-.github{
-display:flex;
-flex-wrap:wrap;
-gap:30px;
-justify-content:center;
-}
+    .blog-form:hover {
+      box-shadow: 0 0 30px #3bd0ff30;
+    }
 
-</style>
+    .blog-form input, .blog-form textarea {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      background: #132b36;
+      border: 1px solid #2e90aa;
+      border-radius: 40px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      color: white;
+      outline: none;
+      transition: 0.2s;
+    }
 
+    .blog-form input:focus, .blog-form textarea:focus {
+      border-color: #3bd0ff;
+      box-shadow: 0 0 0 3px #1f9fc050, 0 0 20px #3bd0ff;
+    }
+
+    .blog-form textarea {
+      border-radius: 28px;
+      resize: vertical;
+    }
+
+    .blog-card {
+      background: rgba(15, 40, 50, 0.6);
+      backdrop-filter: blur(10px);
+      padding: 1.8rem;
+      border-radius: 28px;
+      word-wrap: break-word;
+      animation: glowPulse 5s infinite;
+    }
+
+    .blog-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+      color: #b4edff;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2.5rem;
+      font-size: 0.95rem;
+      opacity: 0.7;
+      border-top: 1px dashed #2d6577;
+    }
+
+    .contact-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      background: rgba(0, 191, 255, 0.03);
+      backdrop-filter: blur(8px);
+      border-radius: 60px;
+      padding: 3rem;
+      border: 1px solid #2a869b;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .contact-flex:hover {
+      border-color: #3bd0ff;
+      box-shadow: 0 0 40px #1aa3cc40;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      font-size: 1.2rem;
+    }
+
+    .contact-item i {
+      font-size: 2rem;
+      color: #3bd0ff;
+      width: 40px;
+      transition: transform 0.3s;
+    }
+
+    .contact-item:hover i {
+      transform: scale(1.2) rotate(5deg);
+    }
+
+    .contact-item a {
+      color: #c5f0ff;
+      text-decoration: none;
+      border-bottom: 1px dotted;
+    }
+
+    hr {
+      border: 0.5px solid #2b788b30;
+      margin: 2rem 0;
+    }
+
+    /* text glow */
+    .text-glow {
+      color: #b7f0ff;
+      text-shadow: 0 0 8px #3bd0ff, 0 0 20px #3bd0ff;
+    }
+    ::selection {
+      background: #3bd0ff70;
+    }
+    i {
+      margin-right: 6px;
+    }
+    .card i {
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 650px) {
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      nav ul {
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .hero h2 {
+        font-size: 3rem;
+      }
+    }
+  </style>
 </head>
-
 <body>
-
-<nav>
-<div class="logo">⌘ SD</div>
-<ul>
-<li><a href="#about">About</a></li>
-<li><a href="#skills">Skills</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#blog">Blog</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-</nav>
-
-<section class="hero">
-
-<h1>Shuvradeep Datta</h1>
-
-<p>Java · React · DevOps · CI/CD Enthusiast</p>
-
-<a href="resume.pdf" download class="btn">
-<i class="fas fa-download"></i> Download Resume
-</a>
-
-</section>
-
-<section id="about" class="section">
-
-<h2>About Me</h2>
-
-<p>
-Software developer experienced in <strong>Java backend</strong>, exploring
-<strong>React and DevOps automation</strong>. I enjoy building scalable
-systems and experimenting with CI/CD pipelines.
-</p>
-
-</section>
-
-<section id="skills" class="section">
-
-<h2>Tech Stack</h2>
-
-<div class="cards">
-
-<div class="card">
-<h3>Java</h3>
-<p>Spring Boot, multithreading, REST APIs</p>
-</div>
-
-<div class="card">
-<h3>React</h3>
-<p>Hooks, state management, UI components</p>
-</div>
-
-<div class="card">
-<h3>DevOps</h3>
-<p>Docker, CI/CD, GitHub Actions</p>
-</div>
-
-<div class="card">
-<h3>Cloud</h3>
-<p>Learning Kubernetes & infrastructure automation</p>
-</div>
-
-</div>
-
-</section>
-
-<section id="projects" class="section">
-
-<h2>Projects</h2>
-
-<div class="cards">
-
-<div class="card">
-<h3>CI/CD Playground</h3>
-<p>GitHub Actions pipelines for automated deployments.</p>
-<a href="https://github.com/shuvradeep-c" target="_blank">
-<i class="fab fa-github"></i> Source
-</a>
-</div>
-
-<div class="card">
-<h3>Java Backend API</h3>
-<p>REST API using Spring Boot, PostgreSQL & JWT auth.</p>
-</div>
-
-<div class="card">
-<h3>React Dashboard</h3>
-<p>Metrics dashboard with live data simulation.</p>
-</div>
-
-</div>
-
-</section>
-
-<section class="section">
-
-<h2>GitHub Stats</h2>
-
-<div class="github">
-
-<img src="https://github-readme-stats.vercel.app/api?username=shuvradeep-c&show_icons=true&theme=tokyonight">
-
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=shuvradeep-c&theme=tokyonight">
-
-</div>
-
-</section>
-
-<section id="blog" class="section">
-
-<h2>Dev Blog</h2>
-
-<div class="blog-form">
-
-<input id="blogTitle" placeholder="Blog title">
-
-<textarea id="blogContent" rows="5" placeholder="Write in Markdown..."></textarea>
-
-<button class="btn" onclick="publishBlog()">Publish</button>
-
-</div>
-
-<div id="blogList" class="cards"></div>
-
-</section>
-
-<section id="contact" class="section">
-
-<h2>Contact</h2>
-
-<div class="contact">
-
-<div>
-<i class="fas fa-envelope"></i>
-shuvra.d@devops.in
-</div>
-
-<div>
-<i class="fab fa-github"></i>
-<a href="https://github.com/shuvradeep-c">github.com/shuvradeep-c</a>
-</div>
-
-<div>
-<i class="fab fa-linkedin"></i>
-<a href="#">linkedin.com/in/shuvradeep</a>
-</div>
-
-</div>
-
-</section>
-
-<footer class="footer">
-© 2026 Shuvradeep Datta
-</footer>
-
-<script>
-
-const blogList=document.getElementById("blogList")
-
-function displayBlogs(){
-
-const posts=JSON.parse(localStorage.getItem("blogs")||"[]")
-
-blogList.innerHTML=""
-
-posts.slice().reverse().forEach(post=>{
-
-const card=document.createElement("div")
-
-card.className="blog-card"
-
-card.innerHTML=
-
-`<h3>${post.title}</h3>
-<div>${marked.parse(post.content)}</div>`
-
-blogList.appendChild(card)
-
-})
-
-}
-
-function publishBlog(){
-
-const title=document.getElementById("blogTitle").value
-const content=document.getElementById("blogContent").value
-
-if(!title||!content){
-alert("Write title and content")
-return
-}
-
-const posts=JSON.parse(localStorage.getItem("blogs")||"[]")
-
-posts.push({title,content})
-
-localStorage.setItem("blogs",JSON.stringify(posts))
-
-document.getElementById("blogTitle").value=""
-document.getElementById("blogContent").value=""
-
-displayBlogs()
-
-}
-
-displayBlogs()
-
-</script>
-
+  <nav>
+    <div class="logo">⌘ SD</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <h2>Shuvradeep Datta</h2>
+    <a href="resume.pdf" download class="btn"></a>
+    <p><i class="fas fa-cloud-sun" style="margin-right: 10px;"></i> Java · React · DevOps · CI/CD enthusiast</p>
+    <button class="btn" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">
+      <i class="fas fa-arrow-down" style="margin-right: 8px;"></i>Explore work
+    </button>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <h2><i class="fas fa-user-astronaut" style="margin-right: 15px;"></i> About me</h2>
+    <div style="background: #12252e60; padding: 2.5rem; border-radius: 48px; border: 1px solid #3bd0ff30; font-size: 1.25rem; font-weight: 300; max-width: 900px; backdrop-filter: blur(6px); transition: 0.3s;">
+      <p>Software developer with experience in <strong class="text-glow">Java backend</strong> and a growing love for modern frontend (React) and <strong class="text-glow">DevOps pipelines</strong>. I enjoy building systems that are both scalable and clean. Currently automating everything that moves — from GitHub Actions to container experiments.</p>
+      <p style="margin-top: 1.2rem;">🔧 constantly learning: Kubernetes, advanced React, and cloud patterns.</p>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section" id="skills">
+    <h2><i class="fas fa-cog" style="margin-right: 15px;"></i> Tech & skills</h2>
+    <div class="cards">
+      <div class="card"><i class="fab fa-java" style="font-size: 2.5rem; color: #f1d453;"></i><h3>Java</h3><p>Multithreading, Spring Boot, clean architecture.</p></div>
+      <div class="card"><i class="fab fa-react" style="font-size: 2.5rem; color: #6ed4ff;"></i><h3>React</h3><p>Hooks, component libraries, state management.</p></div>
+      <div class="card"><i class="fab fa-github" style="font-size: 2.5rem;"></i><h3>Git & CI/CD</h3><p>GitHub Actions, automated testing & deployment.</p></div>
+      <div class="card"><i class="fas fa-cloud" style="font-size: 2.5rem; color: #9bc9ff;"></i><h3>DevOps</h3><p>Docker, basic k8s, infrastructure as code interest.</p></div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <h2><i class="fas fa-code-branch" style="margin-right: 15px;"></i> Featured projects</h2>
+    <div class="cards">
+      <div class="card"><i class="fas fa-rocket" style="font-size: 2rem; margin-bottom: 0.5rem; color: #ffb347;"></i><h3>CI/CD playground</h3><p>Self hosted runner experiments · GitHub Actions for Java/React deployment.</p></div>
+      <div class="card"><i class="fas fa-plug" style="font-size: 2rem; margin-bottom: 0.5rem; color: #82c5ff;"></i><h3>Java backend API</h3><p>RESTful service with JPA, PostgreSQL & JWT security.</p></div>
+      <div class="card"><i class="fas fa-chart-pie" style="font-size: 2rem; margin-bottom: 0.5rem; color: #d4a5ff;"></i><h3>React dashboard</h3><p>Interactive metrics dashboard with dark mode + websocket mock.</p></div>
+    </div>
+  </section>
+
+  <!-- BLOG / MICRO-BLOG (localStorage) -->
+  <section class="section" id="blog">
+    <h2><i class="fas fa-pen-fancy" style="margin-right: 15px;"></i> Dev blog</h2>
+    <div class="blog-form">
+      <h3 style="margin-bottom: 1.5rem; font-weight: 400;">✍️ share your thoughts</h3>
+      <input type="text" id="blogTitle" placeholder="Blog title (e.g. 'My K8s journey')" style="margin-bottom: 1.2rem;">
+      <textarea id="blogContent" placeholder="Write about DevOps, Java, or anything... (stored in browser)"></textarea>
+      <br><br>
+      <button class="btn" onclick="publishBlog()" style="padding: 0.8rem 2.5rem;"><i class="fas fa-feather-alt"></i> Publish</button>
+    </div>
+    <!-- Blog list injected from JS -->
+    <div id="blogList" class="cards" style="margin-top: 2rem;"></div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <h2><i class="fas fa-paper-plane" style="margin-right: 15px;"></i> Connect</h2>
+    <div class="contact-flex">
+      <div class="contact-item"><i class="fas fa-envelope"></i> <span>shuvra.d@devops.in</span></div>
+      <div class="contact-item"><i class="fab fa-github"></i> <a href="#">github.com/shuvradeep-c</a></div>
+      <div class="contact-item"><i class="fab fa-linkedin"></i> <a href="#">linkedin.com/in/shuvradeep</a></div>
+      <div class="contact-item"><i class="fas fa-mug-hot"></i> <span>cloud & automation talks</span></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2026 Shuvradeep Datta — built with <i class="fas fa-heart" style="color: #ff80b0;"></i> and container magic</p>
+  </footer>
+
+  <script>
+    (function() {
+      const blogListEl = document.getElementById('blogList');
+
+      function displayAllBlogs() {
+        const posts = JSON.parse(localStorage.getItem('shuvra_blogs') || '[]');
+        blogListEl.innerHTML = ''; 
+        if (posts.length === 0) {
+          blogListEl.innerHTML = '<div class="blog-card" style="grid-column:1/-1; text-align:center;"><p>✨ No blog entries yet. Be the first to write about Java or DevOps!</p></div>';
+          return;
+        }
+        posts.slice().reverse().forEach(post => {
+          if (!post.title || !post.content) return;
+          const card = document.createElement('div');
+          card.className = 'blog-card';
+          card.innerHTML = `<h3><i class="fas fa-terminal" style="font-size:1.2rem; margin-right:8px;"></i>${escapeHTML(post.title)}</h3>
+            <p style="white-space: pre-wrap;">${escapeHTML(post.content)}</p>
+            <small style="opacity:0.5; display:block; margin-top:1rem;">📌 just now</small>`;
+          blogListEl.appendChild(card);
+        });
+      }
+
+      function escapeHTML(str) {
+        return String(str).replace(/[&<>"]/g, function(m) {
+          if (m === '&') return '&amp;';
+          if (m === '<') return '&lt;';
+          if (m === '>') return '&gt;';
+          if (m === '"') return '&quot;';
+          return m;
+        });
+      }
+
+      window.publishBlog = function() {
+        const titleInput = document.getElementById('blogTitle');
+        const contentInput = document.getElementById('blogContent');
+        const title = titleInput.value.trim();
+        const content = contentInput.value.trim();
+
+        if (!title || !content) {
+          alert('please write both title and content :)');
+          return;
+        }
+
+        const posts = JSON.parse(localStorage.getItem('shuvra_blogs') || '[]');
+        posts.push({ title, content, timestamp: Date.now() });
+        localStorage.setItem('shuvra_blogs', JSON.stringify(posts));
+
+        titleInput.value = '';
+        contentInput.value = '';
+
+        displayAllBlogs();
+      };
+
+      displayAllBlogs();
+
+      // smooth scroll for all anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+
+    })();
+  </script>
 </body>
 </html>
