@@ -1,2 +1,150 @@
-<h1>Hello Dosto</h1>
-<p>New Paragraph</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shuvradeep Datta | Developer Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif}
+body{
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    color:white;
+    min-height:100vh;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    padding:20px 10%;
+}
+
+nav h1{font-weight:600}
+
+nav ul{display:flex;gap:25px;list-style:none}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.hero{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    height:80vh;
+    text-align:center;
+}
+
+.hero h2{
+    font-size:50px;
+    margin-bottom:10px;
+}
+
+.hero p{
+    opacity:.8;
+}
+
+.btn{
+    margin-top:25px;
+    padding:12px 25px;
+    border-radius:25px;
+    border:none;
+    background:#00c6ff;
+    color:black;
+    cursor:pointer;
+}
+
+.section{
+    padding:80px 10%;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(10px);
+    padding:30px;
+    border-radius:15px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    opacity:.7;
+}
+</style>
+</head>
+<body>
+
+<nav>
+<h1>SD</h1>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+
+<section class="hero">
+<h2>Shuvradeep Datta</h2>
+<p>Java Developer | Learning React | DevOps & Cloud Enthusiast</p>
+<button class="btn">View My Work</button>
+</section>
+
+<section class="section" id="about">
+<h2>About Me</h2>
+<br>
+<p>
+Software developer with experience in Java backend development and strong interest in modern web technologies like React and DevOps practices. Passionate about building scalable systems, automating workflows and continuously learning new technologies.
+</p>
+</section>
+
+<section class="section" id="skills">
+<h2>Skills</h2>
+<br>
+<div class="cards">
+<div class="card"><h3>Java</h3><p>Backend development and multithreading concepts</p></div>
+<div class="card"><h3>React</h3><p>Frontend development and modern UI building</p></div>
+<div class="card"><h3>Git & GitHub</h3><p>Version control, workflows and collaboration</p></div>
+<div class="card"><h3>DevOps</h3><p>CI/CD, GitHub Actions and automation</p></div>
+</div>
+</section>
+
+<section class="section" id="projects">
+<h2>Projects</h2>
+<br>
+<div class="cards">
+<div class="card"><h3>CI/CD Pipeline</h3><p>Automated deployment using GitHub Actions</p></div>
+<div class="card"><h3>Java Backend API</h3><p>REST API with scalable architecture</p></div>
+<div class="card"><h3>React Dashboard</h3><p>Interactive UI dashboard application</p></div>
+</div>
+</section>
+
+<section class="section" id="contact">
+<h2>Contact</h2>
+<br>
+<p>Email: your-email@example.com</p>
+<p>GitHub: github.com/yourusername</p>
+<p>LinkedIn: linkedin.com/in/yourprofile</p>
+</section>
+
+<footer>
+<p>© 2026 Shuvradeep Datta</p>
+</footer>
+
+</body>
+</html>
+
