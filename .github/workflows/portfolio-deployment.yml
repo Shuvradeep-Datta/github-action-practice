@@ -24,6 +24,8 @@ jobs:
         # Static Code Artifacts
       - name: Upload Static File
         uses: actions/upload-pages-artifact@v4
+        with:
+            path: .
         # Deploy the pages
       - name: Deploy the Pages
         uses: actions/deploy-pages@v4
