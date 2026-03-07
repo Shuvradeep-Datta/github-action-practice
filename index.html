@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shuvradeep Datta · animated cloud & code</title>
-  <!-- Font & Icons (Font Awesome) -->
+  <title>Shuvradeep · movable image + skills</title>
+  <!-- Font & Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <style>
@@ -23,35 +23,24 @@
       overflow-x: hidden;
     }
 
-    /* ========== ANIMATIONS ========== */
+    /* ===== animations ===== */
     @keyframes float {
       0% { transform: translateY(0px) translateX(0px); }
-      50% { transform: translateY(-10px) translateX(5px); }
+      50% { transform: translateY(-8px) translateX(4px); }
       100% { transform: translateY(0px) translateX(0px); }
     }
-
     @keyframes glowPulse {
       0% { box-shadow: 0 0 5px #3bd0ff30, 0 0 15px #3bd0ff20; }
       50% { box-shadow: 0 0 20px #3bd0ff80, 0 0 40px #3bd0ff40; }
       100% { box-shadow: 0 0 5px #3bd0ff30, 0 0 15px #3bd0ff20; }
     }
-
     @keyframes fadeSlide {
       0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
     }
-
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* base animation for sections */
     .section, .hero, nav, .footer {
       animation: fadeSlide 1s ease forwards;
     }
-
     nav { animation-delay: 0.1s; opacity: 0; }
     .hero { animation-delay: 0.2s; opacity: 0; }
     #about { animation-delay: 0.3s; opacity: 0; }
@@ -61,7 +50,7 @@
     #contact { animation-delay: 0.7s; opacity: 0; }
     .footer { animation-delay: 0.8s; opacity: 0; }
 
-    /* modern glassmorphism + neon accents */
+    /* glass base */
     .glass-card, .card, nav, .blog-card {
       background: rgba(18, 35, 48, 0.5);
       backdrop-filter: blur(12px);
@@ -79,7 +68,7 @@
       margin: 1rem 5% 0;
       border-radius: 60px;
       border-bottom: 1px solid #2dc0e680;
-      box-shadow: 0 8px 20px rgba(0, 150, 200, 0.1);
+      box-shadow: 0 8px 20px rgba(0,150,200,0.1);
       animation: glowPulse 4s infinite;
     }
 
@@ -94,13 +83,17 @@
       background-clip: text;
       animation: gradientShift 6s infinite;
     }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
     nav ul {
       display: flex;
       gap: 2.8rem;
       list-style: none;
     }
-
     nav a {
       color: #cef2ff;
       text-decoration: none;
@@ -111,7 +104,6 @@
       padding-bottom: 4px;
       position: relative;
     }
-
     nav a::after {
       content: '';
       position: absolute;
@@ -122,14 +114,8 @@
       background: linear-gradient(90deg, #2dc0e6, #9feaff);
       transition: width 0.3s ease;
     }
-
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    nav a:hover {
-      color: white;
-    }
+    nav a:hover::after { width: 100%; }
+    nav a:hover { color: white; }
 
     .hero {
       min-height: 85vh;
@@ -140,7 +126,6 @@
       text-align: center;
       padding: 0 5%;
     }
-
     .hero h2 {
       font-size: 4.5rem;
       font-weight: 700;
@@ -151,21 +136,17 @@
       line-height: 1.2;
       animation: gradientShift 8s infinite;
     }
-
     .hero p {
       font-size: 1.4rem;
       max-width: 700px;
       margin: 1.5rem 0 2rem;
-      opacity: 0.9;
-      font-weight: 300;
-      background: rgba(0, 191, 255, 0.1);
+      background: rgba(0,191,255,0.1);
       padding: 0.8rem 2rem;
       border-radius: 60px;
       backdrop-filter: blur(4px);
       border: 1px solid #3bd0ff30;
       animation: float 6s infinite ease-in-out;
     }
-
     .btn {
       background: transparent;
       border: 2px solid #3bd0ff;
@@ -174,7 +155,6 @@
       border-radius: 50px;
       font-weight: 600;
       font-size: 1.1rem;
-      letter-spacing: 0.5px;
       cursor: pointer;
       transition: 0.3s;
       box-shadow: 0 0 12px #3bd0ff50;
@@ -183,51 +163,81 @@
       overflow: hidden;
       z-index: 1;
     }
-
     .btn::before {
       content: '';
       position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0%;
-      height: 0%;
+      top: 50%; left: 50%;
+      width: 0%; height: 0%;
       background: radial-gradient(circle, #3bd0ff80, transparent);
       border-radius: 50%;
       transform: translate(-50%, -50%);
       transition: width 0.6s, height 0.6s;
       z-index: -1;
     }
-
-    .btn:hover::before {
-      width: 300%;
-      height: 300%;
-    }
-
+    .btn:hover::before { width: 300%; height: 300%; }
     .btn:hover {
       background: #3bd0ff;
       color: #0b1f2b;
-      border-color: #a6edff;
       box-shadow: 0 0 35px #2dc0e6;
       transform: scale(1.03);
     }
 
+    /* ----- section with movable image next to title (skills) ----- */
     .section {
       padding: 5rem 8%;
-      border-bottom: 1px solid rgba(45, 192, 230, 0.1);
+      border-bottom: 1px solid rgba(45,192,230,0.1);
     }
 
-    .section h2 {
+    /* special wrapper for the skills header + floating image */
+    .skills-header {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* movable image container – draggable! */
+    .movable-image {
+      width: 90px;
+      height: 90px;
+      border-radius: 30% 70% 70% 30% / 30% 55% 45% 70%; /* organic blob shape */
+      background: linear-gradient(145deg, #3bd0ff, #9f7aea);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem;
+      color: #0b1c24;
+      box-shadow: 0 15px 30px #00c8ff80;
+      cursor: grab;
+      transition: box-shadow 0.2s, border-radius 0.3s;
+      animation: float 5s infinite ease-in-out;
+      user-select: none;
+      z-index: 10;
+      position: relative; /* for drag, we'll adjust transform inline */
+    }
+
+    .movable-image:active {
+      cursor: grabbing;
+      box-shadow: 0 20px 40px #3bd0ff;
+      border-radius: 50% 50% 30% 70% / 40% 40% 60% 60%;
+    }
+
+    /* the title stands next to it */
+    .skills-header h2 {
       font-size: 2.5rem;
       font-weight: 600;
-      margin-bottom: 2.5rem;
+      margin: 0; /* override default bottom */
       display: inline-block;
       background: linear-gradient(135deg, #b3f0ff, #69d1f7);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       border-left: 6px solid #3bd0ff;
       padding-left: 1.3rem;
+      flex: 1;
     }
 
+    /* cards grid */
     .cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -239,24 +249,18 @@
       padding: 2rem 1.5rem;
       border-radius: 32px;
       transition: all 0.25s ease;
-      border: 1px solid rgba(72, 202, 228, 0.2);
-      animation: float 8s infinite ease-in-out;
-      animation-play-state: paused; /* pause by default, play on hover? better: just subtle base motion */
+      border: 1px solid rgba(72,202,228,0.2);
     }
-
-    /* subtle individual float delays */
-    .card:nth-child(1) { animation: float 7s infinite 0.2s; animation-play-state: running; }
-    .card:nth-child(2) { animation: float 8s infinite 0.6s; animation-play-state: running; }
-    .card:nth-child(3) { animation: float 6.5s infinite 0.1s; animation-play-state: running; }
-    .card:nth-child(4) { animation: float 9s infinite 0.9s; animation-play-state: running; }
+    .card:nth-child(1) { animation: float 7s infinite 0.2s; }
+    .card:nth-child(2) { animation: float 8s infinite 0.6s; }
+    .card:nth-child(3) { animation: float 6.5s infinite 0.1s; }
+    .card:nth-child(4) { animation: float 9s infinite 0.9s; }
 
     .card:hover {
       transform: translateY(-10px) scale(1.02);
       border-color: #3bd0ff;
       box-shadow: 0 30px 40px -15px #00c8ff80;
-      animation-play-state: paused;
     }
-
     .card h3 {
       font-size: 1.8rem;
       margin-bottom: 1rem;
@@ -265,28 +269,21 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-
     .card p, .blog-card p {
       opacity: 0.85;
       font-weight: 300;
       font-size: 1rem;
     }
 
-    /* blog section specific */
+    /* blog form etc (unchanged, but keep ) */
     .blog-form {
-      background: rgba(10, 30, 40, 0.7);
+      background: rgba(10,30,40,0.7);
       backdrop-filter: blur(16px);
       padding: 2.5rem;
       border-radius: 40px;
       margin-bottom: 3rem;
       border: 1px solid #55d9ff30;
-      transition: box-shadow 0.3s;
     }
-
-    .blog-form:hover {
-      box-shadow: 0 0 30px #3bd0ff30;
-    }
-
     .blog-form input, .blog-form textarea {
       width: 100%;
       padding: 1rem 1.5rem;
@@ -297,117 +294,63 @@
       font-size: 1rem;
       color: white;
       outline: none;
-      transition: 0.2s;
     }
-
     .blog-form input:focus, .blog-form textarea:focus {
       border-color: #3bd0ff;
-      box-shadow: 0 0 0 3px #1f9fc050, 0 0 20px #3bd0ff;
+      box-shadow: 0 0 0 3px #1f9fc050;
     }
-
-    .blog-form textarea {
-      border-radius: 28px;
-      resize: vertical;
-    }
-
     .blog-card {
-      background: rgba(15, 40, 50, 0.6);
+      background: rgba(15,40,50,0.6);
       backdrop-filter: blur(10px);
       padding: 1.8rem;
       border-radius: 28px;
       word-wrap: break-word;
-      animation: glowPulse 5s infinite;
     }
-
-    .blog-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 0.8rem;
-      color: #b4edff;
-    }
-
     .footer {
       text-align: center;
       padding: 2.5rem;
-      font-size: 0.95rem;
       opacity: 0.7;
       border-top: 1px dashed #2d6577;
     }
-
     .contact-flex {
       display: flex;
       flex-wrap: wrap;
       gap: 2.5rem;
-      background: rgba(0, 191, 255, 0.03);
+      background: rgba(0,191,255,0.03);
       backdrop-filter: blur(8px);
       border-radius: 60px;
       padding: 3rem;
       border: 1px solid #2a869b;
-      transition: border-color 0.3s, box-shadow 0.3s;
     }
-
-    .contact-flex:hover {
-      border-color: #3bd0ff;
-      box-shadow: 0 0 40px #1aa3cc40;
-    }
-
     .contact-item {
       display: flex;
       align-items: center;
       gap: 1.2rem;
       font-size: 1.2rem;
     }
-
     .contact-item i {
       font-size: 2rem;
       color: #3bd0ff;
       width: 40px;
       transition: transform 0.3s;
     }
-
-    .contact-item:hover i {
-      transform: scale(1.2) rotate(5deg);
-    }
-
+    .contact-item:hover i { transform: scale(1.2) rotate(5deg); }
     .contact-item a {
       color: #c5f0ff;
       text-decoration: none;
       border-bottom: 1px dotted;
     }
-
-    hr {
-      border: 0.5px solid #2b788b30;
-      margin: 2rem 0;
-    }
-
-    /* text glow */
     .text-glow {
       color: #b7f0ff;
       text-shadow: 0 0 8px #3bd0ff, 0 0 20px #3bd0ff;
     }
-    ::selection {
-      background: #3bd0ff70;
-    }
-    i {
-      margin-right: 6px;
-    }
-    .card i {
-      display: block;
-      margin-bottom: 12px;
-    }
+    ::selection { background: #3bd0ff70; }
+    i { margin-right: 6px; }
+    .card i { display: block; margin-bottom: 12px; }
 
-    @media (max-width: 650px) {
-      nav {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      nav ul {
-        gap: 1.5rem;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .hero h2 {
-        font-size: 3rem;
-      }
+    @media (max-width: 700px) {
+      .skills-header { flex-direction: column; align-items: flex-start; }
+      .movable-image { margin-bottom: 0.5rem; }
     }
   </style>
 </head>
@@ -423,7 +366,7 @@
     </ul>
   </nav>
 
-  <!-- HERO SECTION -->
+  <!-- HERO -->
   <section class="hero">
     <h2>Shuvradeep Datta</h2>
     <p><i class="fas fa-cloud-sun" style="margin-right: 10px;"></i> Java · React · DevOps · CI/CD enthusiast</p>
@@ -435,15 +378,23 @@
   <!-- ABOUT -->
   <section class="section" id="about">
     <h2><i class="fas fa-user-astronaut" style="margin-right: 15px;"></i> About me</h2>
-    <div style="background: #12252e60; padding: 2.5rem; border-radius: 48px; border: 1px solid #3bd0ff30; font-size: 1.25rem; font-weight: 300; max-width: 900px; backdrop-filter: blur(6px); transition: 0.3s;">
+    <div style="background: #12252e60; padding: 2.5rem; border-radius: 48px; border: 1px solid #3bd0ff30; font-size: 1.25rem; font-weight: 300; max-width: 900px; backdrop-filter: blur(6px);">
       <p>Software developer with experience in <strong class="text-glow">Java backend</strong> and a growing love for modern frontend (React) and <strong class="text-glow">DevOps pipelines</strong>. I enjoy building systems that are both scalable and clean. Currently automating everything that moves — from GitHub Actions to container experiments.</p>
       <p style="margin-top: 1.2rem;">🔧 constantly learning: Kubernetes, advanced React, and cloud patterns.</p>
     </div>
   </section>
 
-  <!-- SKILLS -->
+  <!-- SKILLS with movable image on left side of heading -->
   <section class="section" id="skills">
-    <h2><i class="fas fa-cog" style="margin-right: 15px;"></i> Tech & skills</h2>
+    <!-- header wrapper containing both image and h2 -->
+    <div class="skills-header">
+      <!-- movable image (draggable) -->
+      <div id="dragImage" class="movable-image" style="transform: translate(0px, 0px);">
+        <i class="fas fa-laptop-code"></i>
+      </div>
+      <h2><i class="fas fa-cog" style="margin-right: 15px;"></i> Tech & skills</h2>
+    </div>
+
     <div class="cards">
       <div class="card"><i class="fab fa-java" style="font-size: 2.5rem; color: #f1d453;"></i><h3>Java</h3><p>Multithreading, Spring Boot, clean architecture.</p></div>
       <div class="card"><i class="fab fa-react" style="font-size: 2.5rem; color: #6ed4ff;"></i><h3>React</h3><p>Hooks, component libraries, state management.</p></div>
@@ -462,7 +413,7 @@
     </div>
   </section>
 
-  <!-- BLOG / MICRO-BLOG (localStorage) -->
+  <!-- BLOG -->
   <section class="section" id="blog">
     <h2><i class="fas fa-pen-fancy" style="margin-right: 15px;"></i> Dev blog</h2>
     <div class="blog-form">
@@ -472,7 +423,6 @@
       <br><br>
       <button class="btn" onclick="publishBlog()" style="padding: 0.8rem 2.5rem;"><i class="fas fa-feather-alt"></i> Publish</button>
     </div>
-    <!-- Blog list injected from JS -->
     <div id="blogList" class="cards" style="margin-top: 2rem;"></div>
   </section>
 
@@ -493,8 +443,8 @@
 
   <script>
     (function() {
+      // ------- BLOG (localStorage) -------
       const blogListEl = document.getElementById('blogList');
-
       function displayAllBlogs() {
         const posts = JSON.parse(localStorage.getItem('shuvra_blogs') || '[]');
         blogListEl.innerHTML = ''; 
@@ -512,9 +462,8 @@
           blogListEl.appendChild(card);
         });
       }
-
       function escapeHTML(str) {
-        return String(str).replace(/[&<>"]/g, function(m) {
+        return String(str).replace(/[&<>"]/g, m => {
           if (m === '&') return '&amp;';
           if (m === '<') return '&lt;';
           if (m === '>') return '&gt;';
@@ -522,31 +471,53 @@
           return m;
         });
       }
-
       window.publishBlog = function() {
         const titleInput = document.getElementById('blogTitle');
         const contentInput = document.getElementById('blogContent');
         const title = titleInput.value.trim();
         const content = contentInput.value.trim();
-
-        if (!title || !content) {
-          alert('please write both title and content :)');
-          return;
-        }
-
+        if (!title || !content) { alert('please write both title and content :)'); return; }
         const posts = JSON.parse(localStorage.getItem('shuvra_blogs') || '[]');
         posts.push({ title, content, timestamp: Date.now() });
         localStorage.setItem('shuvra_blogs', JSON.stringify(posts));
-
-        titleInput.value = '';
-        contentInput.value = '';
-
+        titleInput.value = ''; contentInput.value = '';
         displayAllBlogs();
       };
-
       displayAllBlogs();
 
-      // smooth scroll for all anchor links
+      // ------- DRAG MOVABLE IMAGE (left of "Tech & skills") -------
+      const dragImg = document.getElementById('dragImage');
+      let isDragging = false;
+      let offsetX, offsetY;
+
+      dragImg.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        // get current translate if any (default 0,0)
+        const style = window.getComputedStyle(dragImg);
+        const matrix = new DOMMatrixReadOnly(style.transform);
+        const currentX = matrix.m41 || 0;  // translate X
+        const currentY = matrix.m42 || 0;  // translate Y
+
+        offsetX = e.clientX - currentX;
+        offsetY = e.clientY - currentY;
+
+        dragImg.style.cursor = 'grabbing';
+        e.preventDefault(); // prevent text selection
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const newX = e.clientX - offsetX;
+        const newY = e.clientY - offsetY;
+        dragImg.style.transform = `translate(${newX}px, ${newY}px)`;
+      });
+
+      window.addEventListener('mouseup', () => {
+        isDragging = false;
+        dragImg.style.cursor = 'grab';
+      });
+
+      // smooth scroll for internal links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
           e.preventDefault();
@@ -554,7 +525,6 @@
           if (target) target.scrollIntoView({ behavior: 'smooth' });
         });
       });
-
     })();
   </script>
 </body>
