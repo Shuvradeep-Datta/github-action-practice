@@ -4,6 +4,18 @@ on:
     branches:
       - main
 
+  workflow_dispatch: 
+    inputs:
+      environment:
+        description: This is the workflow value
+        default: dev
+        required: true
+        type: choice
+        options:
+          - dev
+          - stagging
+          - prod
+
 permissions:
     pages: write      # to deploy to Pages
     id-token: write   # to verify the deployment originates from an appropriate source
