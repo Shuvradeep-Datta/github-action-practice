@@ -7,11 +7,13 @@ on:
 
 jobs:
     validate:
-        runs-on: ubuntu-latest
         strategy:
           fail-fast: false
           matrix:
+            runner: [ubuntu-latest,windows-latest,macos-latest]
             python-version: ["3.9","3.10","3.11","3.12","3.13"]
+        runs-on: ${{matrix.runner}} 
+            
         steps:
           - name: checkout-code
             uses: actions/checkout@v4
