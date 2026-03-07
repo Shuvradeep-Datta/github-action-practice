@@ -12,5 +12,7 @@ jobs:
         steps:
         - name: Checkout code
           uses: actions/checkout@v4
+        - name: docker setup
+          uses: docker/setup-compose-action@v2
         - name: deploy with docker compose 
           run: docker compose up -d --build
