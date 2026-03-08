@@ -1,36 +1,34 @@
 name: Deploy Flask App
 
 on:
-
-  workflow_dispatch:
-    
-    
+  workflow_dispatch
 
 jobs:
-    deploy:
-        env:
-            DOCKERHUB_USER: ${{ vars.DOCKERHUB_USER }}
-            DOCKER_TAG: ${{github.sha}}
-        runs-on: self-hosted
-        steps:
-        - name: Checkout code
-          uses: actions/checkout@v4
-        - name: Install Docker
-          run: |
-            sudo apt-get update
-            sudo apt-get install -y docker.io
-            sudo systemctl start docker
-            sudo systemctl enable docker
-        - name: Stop running container
-          run: docker compose down || true 
-        - name: Remove old docker images 
-          run: | 
-            docker image rm $DOCKERHUB_USER/flask-app1:latest || true
-            docker image prune -af
-        - name: docker setup
-          uses: docker/setup-compose-action@v2
-        - name: deploy with docker compose
-          run: |
-            docker compose down
-            docker compose build --no-cache
-            docker compose up -d
+  deploy:
+    env:
+      DOCKERHUB_USER: ${{ vars.DOCKERHUB_USER }}
+      DOCKER_TAG: latest
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Docker
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker.io
+          sudo systemctl start docker
+          sudo systemctl enable docker
+
+      - name: Setup Docker Compose
+        uses: docker/setup-compose-action@v2
+
+      - name: Stop running container
+        run: docker compose down || true
+
+      - name: Pull latest image
+        run: docker compose pull
+
+      - name: Run container
+        run: docker compose up -d --force-recreate

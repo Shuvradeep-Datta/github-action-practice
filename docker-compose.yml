@@ -1,6 +1,4 @@
 services:
-  
-
   web:
     image: ${DOCKERHUB_USER}/flask-app1:${DOCKER_TAG}
     ports:

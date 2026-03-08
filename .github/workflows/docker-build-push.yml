@@ -32,5 +32,3 @@ jobs:
                     ${{ vars.DOCKERHUB_USER }}/flask-app1:latest
                     ${{ vars.DOCKERHUB_USER }}/flask-app1:${{ github.sha }}
                     ${{ vars.DOCKERHUB_USER }}/flask-app1:${{ github.ref_name }}
-                    
-  
