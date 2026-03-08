@@ -19,10 +19,7 @@ jobs:
             sudo apt-get install -y docker.io
             sudo systemctl start docker
             sudo systemctl enable docker
-        - name: Pull latest image
-          run: docker compose pull
-
-        - name: Deploy container
-          run: |
-            docker compose down
-            docker compose up -d --force-recreate
+        - name: docker setup
+          uses: docker/setup-compose-action@v2
+        - name: deploy with docker compose 
+          run: docker compose down && docker compose up -d --build --force-recreate --pull always
