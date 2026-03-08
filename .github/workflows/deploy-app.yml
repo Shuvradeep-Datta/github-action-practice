@@ -19,6 +19,12 @@ jobs:
             sudo apt-get install -y docker.io
             sudo systemctl start docker
             sudo systemctl enable docker
+        - name: Stop running container
+          run: docker compose down || true 
+        - name: Remove old docker images 
+          run: | 
+            docker image rm $DOCKERHUB_USER/flask-app:latest || true
+            docker image prune -af
         - name: docker setup
           uses: docker/setup-compose-action@v2
         - name: deploy with docker compose 
