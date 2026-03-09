@@ -1,11 +1,12 @@
 name: hello
 
 on: 
-  push:
-    branches: [main]
+  # push:
+  #   branches: [main]
 
-    paths: 
-      - '**.html'
+  #   paths: 
+  #     - '**.html'
+  workflow_dispatch:
     
 
 
