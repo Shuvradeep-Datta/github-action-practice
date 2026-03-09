@@ -1,6 +1,9 @@
 name: DevsecOps End To End Pipeline
 
 on:
+    push:
+        branches:
+          - main
     workflow_dispatch:
       
 
