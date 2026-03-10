@@ -20,7 +20,7 @@ jobs:
             key: ${{secrets.EC2_SSH_PRIVATE_KEY}}
             script: |
                   echo "Running App"
-                  mkdir devops
+                  mkdir -p devopsZero
         
         - name: Copy the docker-compose file
           uses: appleboy/scp-action@v1
