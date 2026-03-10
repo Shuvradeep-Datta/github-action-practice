@@ -3,111 +3,346 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DevOps Zero To Hero</title>
+<title>Shuvradeep Datta | UI Developer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
 
 body{
-min-height:100vh;
+background:linear-gradient(135deg,#0f172a,#1e293b);
+color:white;
+}
+
+/* NAVBAR */
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 10%;
+position:sticky;
+top:0;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(10px);
+}
+
+nav h1{
+font-size:24px;
+color:#38bdf8;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:30px;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+font-weight:500;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#38bdf8;
+}
+
+/* HERO */
+
+.hero{
+height:90vh;
 display:flex;
 align-items:center;
 justify-content:center;
-background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
-color:#e0e0e0
+text-align:center;
+flex-direction:column;
+padding:0 10%;
 }
 
-.container{text-align:center;padding:2rem;max-width:640px}
-
-h1{
-font-size:2.5rem;
-background:linear-gradient(90deg,#00d2ff,#7b2ff7);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-margin-bottom:.5rem
+.hero h2{
+font-size:50px;
+margin-bottom:10px;
 }
 
-.badge{
-display:inline-block;
-margin:1rem 0;
-padding:.4rem 1.2rem;
-border:1px solid #7b2ff7;
-border-radius:999px;
-font-size:.9rem;
-color:#c4b5fd
+.hero span{
+color:#38bdf8;
 }
 
-.pipeline{
-margin-bottom:1.5rem;
-font-size:.9rem;
-color:#9ca3af
+.hero p{
+max-width:600px;
+opacity:0.8;
+margin-bottom:30px;
 }
 
-.cards{
-display:flex;
-gap:1rem;
-justify-content:center;
-flex-wrap:wrap
+.btn{
+padding:12px 30px;
+border:none;
+background:#38bdf8;
+color:black;
+border-radius:30px;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
 }
 
-.card{
-background:rgba(255,255,255,.06);
-border:1px solid rgba(255,255,255,.1);
-border-radius:12px;
-padding:1.4rem;
-min-width:150px
+.btn:hover{
+transform:scale(1.05);
 }
 
-.card span{
-display:block;
-font-size:.7rem;
-color:#9ca3af;
-margin-bottom:.4rem;
-letter-spacing:.1em
+/* ABOUT */
+
+section{
+padding:80px 10%;
 }
 
-.card strong{
-font-size:1.2rem;
-color:#f9fafb
+.section-title{
+text-align:center;
+font-size:36px;
+margin-bottom:40px;
 }
+
+.about{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
+}
+
+.about img{
+width:100%;
+border-radius:20px;
+}
+
+/* SKILLS */
+
+.skills{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+}
+
+.skill{
+background:rgba(255,255,255,0.05);
+padding:30px;
+border-radius:15px;
+text-align:center;
+transition:0.3s;
+}
+
+.skill:hover{
+transform:translateY(-10px);
+background:rgba(255,255,255,0.1);
+}
+
+/* PROJECTS */
+
+.projects{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.project{
+background:rgba(255,255,255,0.05);
+border-radius:15px;
+overflow:hidden;
+transition:0.3s;
+}
+
+.project img{
+width:100%;
+height:180px;
+object-fit:cover;
+}
+
+.project-content{
+padding:20px;
+}
+
+.project:hover{
+transform:translateY(-10px);
+}
+
+/* CONTACT */
+
+.contact{
+text-align:center;
+}
+
+.contact p{
+margin-bottom:20px;
+opacity:0.8;
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:black;
+margin-top:40px;
+opacity:0.7;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+.about{
+grid-template-columns:1fr;
+text-align:center;
+}
+
+.hero h2{
+font-size:36px;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<!-- NAVBAR -->
 
-<h1>DevOps Zero To Hero [DevSecOps Live]</h1>
-<div class="badge">Josh Batch 10 (USA Edition BOOOM)</div>
+<nav>
+<h1>Portfolio</h1>
 
-<div class="pipeline">
-Built • Tested • Linted • Deployed via GitHub Actions
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<h2>Hello, I'm <span>Shuvradeep</span></h2>
+
+<p>
+Senior UI Developer specializing in modern web applications,
+beautiful interfaces, and high performance user experiences.
+</p>
+
+<button class="btn">View My Work</button>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<h2 class="section-title">About Me</h2>
+
+<div class="about">
+
+<img src="https://picsum.photos/500" alt="profile">
+
+<div>
+<p>
+I am a passionate UI Developer with experience designing modern,
+responsive and high performance web applications.
+</p>
+
+<br>
+
+<p>
+I specialize in building scalable UI architectures using modern
+technologies and creating seamless user experiences.
+</p>
+
 </div>
 
-<div class="cards">
-<div class="card">
-<span>Framework</span>
-<strong>Flask 3.1</strong>
 </div>
 
-<div class="card">
-<span>Runtime</span>
-<strong>Python 3.14</strong>
+</section>
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+<h2 class="section-title">Skills</h2>
+
+<div class="skills">
+
+<div class="skill">HTML5</div>
+<div class="skill">CSS3</div>
+<div class="skill">JavaScript</div>
+<div class="skill">React</div>
+<div class="skill">UI/UX Design</div>
+<div class="skill">Figma</div>
+<div class="skill">Responsive Design</div>
+<div class="skill">Performance Optimization</div>
+
 </div>
 
-<div class="card">
-<span>Deploy</span>
-<strong>AWS ECS</strong>
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+<h2 class="section-title">Projects</h2>
+
+<div class="projects">
+
+<div class="project">
+<img src="https://picsum.photos/400/200?1">
+<div class="project-content">
+<h3>Ecommerce UI</h3>
+<p>Modern ecommerce website with responsive design.</p>
+</div>
 </div>
 
-<div class="card">
-<span>CI/CD</span>
-<strong>GitHub Actions</strong>
+<div class="project">
+<img src="https://picsum.photos/400/200?2">
+<div class="project-content">
+<h3>Dashboard UI</h3>
+<p>Admin dashboard with analytics and charts.</p>
+</div>
+</div>
+
+<div class="project">
+<img src="https://picsum.photos/400/200?3">
+<div class="project-content">
+<h3>Portfolio Website</h3>
+<p>Personal portfolio with modern UI animations.</p>
 </div>
 </div>
 
 </div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact" class="contact">
+
+<h2 class="section-title">Contact</h2>
+
+<p>Interested in working together?</p>
+
+<button class="btn">Contact Me</button>
+
+</section>
+
+<footer>
+
+© 2026 Shuvradeep Datta | UI Developer
+
+</footer>
 
 </body>
 </html>
