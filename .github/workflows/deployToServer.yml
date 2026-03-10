@@ -19,8 +19,11 @@ jobs:
             username: ${{ secrets.EC2_SSH_USER }}
             key: ${{secrets.EC2_SSH_PRIVATE_KEY}}
             script: |
-                  echo "Running App"
-                  mkdir -p devopsZero
+                  echo "Running App and installing docker"
+                  sudo apt install docker.io docker-compose-v2 -y
+                  sudo usermod -aG docker $USER && newgrp docker
+                  docker run hello-world
+                  mkdir -p devops
         
         - name: Copy the docker-compose file
           uses: appleboy/scp-action@v1
@@ -41,8 +44,7 @@ jobs:
                   echo "Running App"
                   export DOCKERHUB_USER=${{ vars.DOCKERHUB_USER }}
                   export DOCKER_TAG=${{ github.event.workflow_run.head_sha }}
-                  sudo apt install docker.io docker-compose-v2 -y
-                  sudo usermod -aG docker $USER && newgrp docker
+                  
                    echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login --username ${{ vars.DOCKERHUB_USER }} --password-stdin
                   cd ~/devops/ && docker compose down || true && docker compose pull &&  docker compose up -d --force-recreate
 
