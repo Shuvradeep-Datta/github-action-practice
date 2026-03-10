@@ -29,3 +29,10 @@ jobs:
         needs: [build]
         uses: ./.github/workflows/image-scann.yml
         secrets: inherit
+
+    #deploy to Production boom
+
+    deploy:
+        needs: [trivy]
+        uses: ./.github/workflows/deployToServer.yml
+        secrets: inherit
