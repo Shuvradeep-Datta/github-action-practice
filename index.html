@@ -386,7 +386,7 @@ const roles=[
 ];
 
 let roleIndex=0;
-let charIndex=1;
+let charIndex=0;
 let deleting=false;
 
 function typeEffect(){
@@ -402,7 +402,7 @@ typing.textContent=currentRole.substring(0,charIndex--);
 
 let speed=120;
 
-if(!deleting && charIndex===currentRole.length){
+if(!deleting && charIndex===currentRole.length+1){
 
 speed=1500;
 deleting=true;
