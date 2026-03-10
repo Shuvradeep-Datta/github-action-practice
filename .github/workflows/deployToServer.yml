@@ -48,6 +48,7 @@ jobs:
                   echo ${{ github.sha }}
                    echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login --username ${{ vars.DOCKERHUB_USER }} --password-stdin
                   cd ~/devops/ && docker compose down || true && docker compose pull &&  docker compose up -d --force-recreate
+                  
 
 
 
