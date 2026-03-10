@@ -1,22 +1,26 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Shuvradeep Portfolio</title>
 
 <style>
+
+/* GLOBAL */
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial;
+font-family:Segoe UI, sans-serif;
 scroll-behavior:smooth;
 }
 
 body{
-background:#0f172a;
+background:#020617;
 color:white;
 }
 
@@ -26,9 +30,11 @@ nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px 8%;
+padding:20px 8%;
 background:#020617;
-flex-wrap:wrap;
+position:sticky;
+top:0;
+z-index:100;
 }
 
 nav h2{
@@ -38,13 +44,13 @@ color:#38bdf8;
 nav ul{
 display:flex;
 list-style:none;
-gap:20px;
-flex-wrap:wrap;
+gap:25px;
 }
 
 nav a{
-color:white;
 text-decoration:none;
+color:white;
+transition:0.3s;
 }
 
 nav a:hover{
@@ -54,25 +60,29 @@ color:#38bdf8;
 /* HERO */
 
 .hero{
-min-height:90vh;
+height:90vh;
 display:flex;
+flex-direction:column;
 justify-content:center;
 align-items:center;
-flex-direction:column;
 text-align:center;
 padding:20px;
 }
 
 .hero h1{
-font-size:50px;
+font-size:60px;
 }
 
-#typing{
-color:#38bdf8;
+.gradient-text{
+background:linear-gradient(90deg,#38bdf8,#818cf8,#22d3ee);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+text-shadow:0 0 15px rgba(56,189,248,0.6);
 }
 
 .cursor{
 animation:blink 1s infinite;
+margin-left:5px;
 }
 
 @keyframes blink{
@@ -82,32 +92,31 @@ animation:blink 1s infinite;
 }
 
 .hero p{
-margin-top:10px;
+margin-top:15px;
 opacity:0.8;
 }
 
-/* BUTTON */
-
 .btn{
-margin-top:20px;
-padding:12px 25px;
+margin-top:25px;
+padding:12px 30px;
 border:none;
 background:#38bdf8;
 color:black;
 border-radius:30px;
+font-weight:600;
 cursor:pointer;
 }
 
-/* SECTIONS */
+/* SECTION */
 
 section{
-padding:60px 8%;
+padding:80px 8%;
 }
 
 .title{
 text-align:center;
+font-size:35px;
 margin-bottom:40px;
-font-size:32px;
 }
 
 /* ABOUT */
@@ -115,28 +124,34 @@ font-size:32px;
 .about{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:30px;
+gap:40px;
 align-items:center;
 }
 
 .about img{
 width:100%;
-border-radius:10px;
+border-radius:15px;
 }
 
 /* SKILLS */
 
 .skills{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-gap:15px;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:20px;
 }
 
 .skill{
-background:#1e293b;
-padding:20px;
+background:#0f172a;
+padding:25px;
 text-align:center;
-border-radius:8px;
+border-radius:10px;
+transition:0.3s;
+}
+
+.skill:hover{
+transform:translateY(-8px);
+background:#1e293b;
 }
 
 /* PROJECTS */
@@ -144,23 +159,28 @@ border-radius:8px;
 .projects{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+gap:25px;
 }
 
 .project{
-background:#1e293b;
-border-radius:8px;
+background:#0f172a;
+border-radius:10px;
 overflow:hidden;
+transition:0.3s;
+}
+
+.project:hover{
+transform:translateY(-10px);
 }
 
 .project img{
 width:100%;
-height:160px;
+height:180px;
 object-fit:cover;
 }
 
 .project-content{
-padding:15px;
+padding:20px;
 }
 
 /* CONTACT */
@@ -177,7 +197,7 @@ gap:10px;
 .contact textarea{
 padding:12px;
 border:none;
-border-radius:5px;
+border-radius:6px;
 }
 
 /* FOOTER */
@@ -194,7 +214,7 @@ margin-top:40px;
 @media(max-width:768px){
 
 .hero h1{
-font-size:32px;
+font-size:36px;
 }
 
 .about{
@@ -235,9 +255,13 @@ gap:10px;
 
 <section class="hero">
 
-<h1>Hello I'm <span id="typing"></span><span class="cursor">|</span></h1>
+<h1>
 
-<p>UI Developer • DevOps Learner • Cloud Enthusiast</p>
+<span class="gradient-text" id="typing"></span> <span class="cursor">|</span>
+
+</h1>
+
+<p>UI Developer • DevOps Engineer • Cloud Engineer</p>
 
 <button class="btn">View My Work</button>
 
@@ -256,8 +280,9 @@ gap:10px;
 <div>
 
 <p>
-I build responsive websites and modern user interfaces.
-I also work with DevOps tools like Docker and CI/CD pipelines.
+Hi, I'm Shuvradeep. I build modern responsive websites
+and work with DevOps tools like Docker, CI/CD pipelines,
+and cloud platforms.
 </p>
 
 </div>
@@ -298,8 +323,8 @@ I also work with DevOps tools like Docker and CI/CD pipelines.
 <div class="project">
 <img src="https://picsum.photos/400/200?1">
 <div class="project-content">
-<h3>Ecommerce Website</h3>
-<p>Responsive online store UI.</p>
+<h3>Ecommerce UI</h3>
+<p>Modern responsive ecommerce interface.</p>
 </div>
 </div>
 
@@ -307,7 +332,7 @@ I also work with DevOps tools like Docker and CI/CD pipelines.
 <img src="https://picsum.photos/400/200?2">
 <div class="project-content">
 <h3>CI/CD Pipeline</h3>
-<p>Docker + GitHub Actions deployment.</p>
+<p>Docker deployment using GitHub Actions.</p>
 </div>
 </div>
 
@@ -315,7 +340,7 @@ I also work with DevOps tools like Docker and CI/CD pipelines.
 <img src="https://picsum.photos/400/200?3">
 <div class="project-content">
 <h3>Cloud Dashboard</h3>
-<p>Admin analytics UI design.</p>
+<p>Admin dashboard with analytics.</p>
 </div>
 </div>
 
@@ -351,24 +376,52 @@ I also work with DevOps tools like Docker and CI/CD pipelines.
 
 <script>
 
-const text="Shuvradeep";
-let i=0;
+/* TYPING ANIMATION */
 
-function typing(){
+const roles=[
+"Shuvradeep",
+"UI Developer",
+"DevOps Engineer",
+"Cloud Engineer"
+];
 
-if(i<text.length){
+let roleIndex=0;
+let charIndex=0;
+let deleting=false;
 
-document.getElementById("typing").innerHTML+=text.charAt(i);
+function typeEffect(){
 
-i++;
+const currentRole=roles[roleIndex];
+const typing=document.getElementById("typing");
 
-setTimeout(typing,150);
+if(!deleting){
+typing.textContent=currentRole.substring(0,charIndex++);
+}else{
+typing.textContent=currentRole.substring(0,charIndex--);
+}
+
+let speed=120;
+
+if(!deleting && charIndex===currentRole.length){
+
+speed=1500;
+deleting=true;
 
 }
 
+else if(deleting && charIndex===0){
+
+deleting=false;
+roleIndex=(roleIndex+1)%roles.length;
+speed=400;
+
 }
 
-typing();
+setTimeout(typeEffect,speed);
+
+}
+
+typeEffect();
 
 </script>
 
